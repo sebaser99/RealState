@@ -1,0 +1,27 @@
+@use "../../base/variables" as v;
+@use "../../base/mixins" as m;
+
+.navegacion {
+    margin-top: 5rem;
+    display: flex;
+    flex-direction: column;
+    @include m.tablet { 
+          flex-direction: row;
+          justify-content: space-between;
+          gap: 2rem;
+          align-items: center;
+          margin-top: 0;
+    }
+
+    &__link {
+        margin-bottom: 2rem;
+        color: v.$blanco;
+        font-size: 1.8rem;
+        :last-of-type {
+            margin-bottom: 0;
+        }
+        @include m.tablet { 
+             margin-bottom: 0; 
+        }
+    }
+}

@@ -1,0 +1,91 @@
+@use "../../base/mixins" as m;
+@use "../../base/variables" as v;
+
+.header {
+    background-image: linear-gradient(to right, transparentize(v.$primario, .1) 0%, transparentize(v.$primario, .1) 100%), url('../img/header_bg.jpg') ;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    padding: 3rem 0;
+    position: relative;
+    @include m.tablet { 
+        padding: 3rem 0 10rem 0;
+    }
+    @include m.desktopxl { 
+        padding: 3rem 0 15rem 0;
+    }
+
+    &__barra {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        @include m.tablet { 
+              flex-direction: row;
+              justify-content: space-between;
+        }
+    }
+    &__logo {
+        width: 25rem;
+    }
+    &__contenido {
+        @include m.tablet { 
+            max-width: 45rem;
+            margin-top: 5rem;
+        }
+        @include m.tabletxl { 
+              max-width: 50rem;
+        }
+        @include m.desktop { 
+            max-width: 60rem;
+        }
+        @include m.desktopxl { 
+            max-width: 65rem;
+        }
+    }
+    &__heading {
+        color: v.$blanco;
+        text-align: center;
+        @include m.tablet { 
+              text-align: left;
+        }
+    }
+    &__texto {
+        color: v.$blanco;
+        padding: 0 1rem;
+    }
+    &__contenedor-imagen {
+        @include m.tablet { 
+            position: absolute;
+            right: 0;
+            bottom: -5rem;
+            max-width: 31rem;  
+        }
+        @include m.tabletxl { 
+              max-width: 38rem;
+        }
+        @include m.desktop { 
+            max-width: 45rem;
+            bottom: -5rem;
+        }
+        @include m.desktopxl { 
+            max-width: 50rem;
+            bottom: -5rem;
+        }
+
+       
+    }
+    &__imagen {
+        border-top-left-radius: 1rem;
+        border-bottom-left-radius: 1rem;
+    }
+
+
+    &__texto,
+    &__contenedor-imagen {
+        display: none;
+        @include m.tablet { 
+              display: block;
+        }
+    }
+   
+}

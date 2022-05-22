@@ -1,0 +1,92 @@
+@use "../../base/variables" as v;
+@use "../../base/mixins" as m;
+
+.propiedades {
+    margin-top: 5rem;
+    @include m.tablet { 
+          margin-top: 10rem;
+    }
+
+    &__heading {
+        @include m.heading;
+    }
+    &__grid {
+      
+        @include m.tablet { 
+             display: grid;
+             @include m.grid(2, 3rem);
+        }
+        @include m.desktop { 
+              @include m.grid(3, 2rem)
+        }
+    }
+}
+
+.propiedad {
+    margin-bottom: 5rem;
+    background-color: v.$blanco;
+
+    &__imagen {
+        aspect-ratio: 10 / 6;
+        background-size: cover;
+        background-repeat: no-repeat;
+        
+        background-position: center center;
+        position: relative;
+    }
+    @for $i from 1 through 6 {
+        $imagen:  '../img/propiedad_' + $i + ".jpg";
+        &:nth-child(#{$i}) &__imagen {
+             background-image: linear-gradient(to bottom, transparentize(v.$negro, 1%) 0%, transparentize(v.$negro, .3%) 100% ), url($imagen)
+        }
+    }
+    // &:nth-child(1) &__imagen {
+    //        background-image: url('../img/propiedad_1.jpg');
+    // }
+    // &:nth-child(2) &__imagen {
+    //         background-image: url('../img/propiedad_2.jpg');
+    //  }
+    //  &:nth-child(3) &__imagen {
+    //         background-image: url('../img/propiedad_3.jpg');
+    //  }
+    //  &:nth-child(4) &__imagen {
+    //         background-image: url('../img/propiedad_4.jpg');
+    //  }
+    //  &:nth-child(5) &__imagen {
+    //         background-image: url('../img/propiedad_5.jpg');
+    //  }
+    //  &:nth-child(6) &__imagen {
+    //         background-image: url('../img/propiedad_6.jpg');
+    //  }
+
+     &__nombre {
+         color: v.$blanco;
+         font-size: 2.4rem;
+         position: absolute;
+         left: 1rem;
+         bottom: 1rem;
+     }
+     &__contenido {
+         padding: 2rem;
+     }
+     &__texto{
+         margin: 0;
+     }
+     &__precio {
+         font-size: 3rem;
+         color: v.$primario;
+         margin: 0;
+         font-weight: 500;
+    }
+    &__enlace {
+        @include m.boton(v.$primario, v.$blanco);
+        text-transform: uppercase;
+        @include m.tablet { 
+              width: 80%;
+        }
+        @include m.desktop { 
+              width: 90%;
+        }
+    }
+
+}

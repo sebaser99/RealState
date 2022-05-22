@@ -1,0 +1,74 @@
+@use "../../base/variables" as v;
+@use "../../base/mixins" as m;
+
+.destacada {
+    margin-top: 5rem;
+    background-image: linear-gradient(to bottom, transparent 0%, transparent 50%, v.$primario 50%, v.$primario 100%), url('../img/destacada.jpg');
+    background-repeat: no-repeat;
+    background-position: center, -110rem -30rem;
+    background-size: 100%, cover;
+    @include m.telefono { 
+        background-position: center, -55rem -30rem;
+        background-size: 100%, cover;
+          
+    }
+    @include m.tablet { 
+        background-image: linear-gradient(to right, transparent 0%, transparent 50%, v.$primario 50%, v.$primario 100%), url('../img/destacada.jpg'); 
+        background-position: center,-46rem center;
+    }
+    @include m.desktop {
+        background-position: center,-52rem center;
+    }
+    // background-repeat: no-repeat;
+    // background-position: center, top;
+    // background-size: 100%, 130rem;
+    // @include m.telefono {   
+    //     background-size: 100%, 100rem;
+    //     background-position: center, -25rem -7rem;
+    // }
+    // @include m.tablet { 
+    //     background-image: linear-gradient(to right, transparent 0%, transparent 50%, v.$primario 50%, v.$primario 100%), url('../img/destacada.jpg'); 
+    //     background-size: 100%, cover;
+    //     background-position: center, -44rem center ;
+    // }
+   
+    &__grid {
+        display: grid;
+        grid-template-rows: repeat(2, 1fr); 
+        @include m.tablet { 
+            grid-template-rows: unset;
+            @include m.grid(2, 2rem);
+        }
+    }
+    &__contenido {
+        padding: 5rem;
+        grid-row: 2 / 3;
+        color: v.$blanco;
+        @include m.tablet { 
+            grid-column: 2 / 3;
+        }
+    }
+    &__heading {
+        text-transform: uppercase;
+    }
+    &__texto {
+        color: v.$blanco;
+        font-size: 1.8rem;
+    }
+    &__precio {
+        color: v.$blanco;
+        font-size: 2.4rem;
+        font-weight: 700;
+    }
+    &__enlace {
+        @include m.boton(v.$blanco, v.$primario);
+        display: block;
+        @include m.tablet { 
+              width: 100%;
+        }
+        @include m.desktop { 
+            width: 60%;
+            
+        }
+    }
+}
